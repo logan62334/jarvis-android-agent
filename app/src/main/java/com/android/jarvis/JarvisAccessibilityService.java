@@ -46,24 +46,20 @@ public class JarvisAccessibilityService extends AccessibilityService {
                         handlePopup("选择送达时间", accessibilityNodeInfo);
                         break;
                     case "dy":
-//                        Log.i(TAG, "返回购物车");
-//                        handlePopup("返回购物车", accessibilityNodeInfo);
-                        Log.i(TAG, "重新加载");
-                        handlePopup("重新加载", accessibilityNodeInfo);
+                        Log.i(TAG, "返回购物车");
+                        handlePopup("返回购物车", accessibilityNodeInfo);
                         break;
-                    default:
-                        Log.i(TAG, "默认");
-                        if (isExist("去结算", accessibilityNodeInfo)) {
-                            selectAll(accessibilityNodeInfo);
-                            findAndPerformAction("去结算", accessibilityNodeInfo);
-                        } else if (isExist("返回购物车", accessibilityNodeInfo)) {
-                            findAndPerformAction("重新加载", accessibilityNodeInfo);
-                        } else if (isExist("请选择送达时间", accessibilityNodeInfo)) {
-                            findAndPerformAction("请选择送达时间", accessibilityNodeInfo);
-                        } else {
-                            findAndPerformAction("立即支付", accessibilityNodeInfo);
-                        }
-                        break;
+                }
+                Log.i(TAG, "默认");
+                if (isExist("去结算", accessibilityNodeInfo)) {
+                    selectAll(accessibilityNodeInfo);
+                    findAndPerformAction("去结算", accessibilityNodeInfo);
+                } else if (isExist("返回购物车", accessibilityNodeInfo)) {
+                    findAndPerformAction("返回购物车", accessibilityNodeInfo);
+                } else if (isExist("请选择送达时间", accessibilityNodeInfo)) {
+                    findAndPerformAction("请选择送达时间", accessibilityNodeInfo);
+                } else {
+                    findAndPerformAction("立即支付", accessibilityNodeInfo);
                 }
             }
         }
@@ -76,11 +72,7 @@ public class JarvisAccessibilityService extends AccessibilityService {
     private void retry(AccessibilityEvent event){
         try {
             Log.i(TAG, "currentTextName: " + event.getText().toString());
-            String currentTextName = event.getText().toString();
-            if (("[重新加载]").equals(currentTextName)) {
-                Log.i(TAG, "重新加载");
-                findAndPerformAction("重新加载",event.getSource());
-            }
+            findAndPerformAction("重新加载",event.getSource());
         }catch (Exception e){
             e.printStackTrace();
         }
