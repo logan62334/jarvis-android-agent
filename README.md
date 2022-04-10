@@ -18,7 +18,7 @@
 
 注意：视频没有加速，这是正常自动执行的速度，要比手动要快一些
 
-<img src="demo.gif" width="370" height="730">
+<img src="demo.gif" width="300" height="630">
 
 ## 下载
 
