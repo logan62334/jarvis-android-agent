@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">叮咚抢菜助手</string>
+    <string name="accessibility_service_description">智能抢菜服务:提前把商品加到叮咚买菜的购物车中，在开始抢之前打开此服务开关，然后进入叮咚买菜的购物车页面，接下来就可以自动完成抢菜流程了，如果出现支付页，恭喜你，说明是抢菜成功了！</string>
+</resources>
