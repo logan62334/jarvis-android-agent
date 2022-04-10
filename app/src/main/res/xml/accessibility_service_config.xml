@@ -6,4 +6,4 @@
     android:canRequestEnhancedWebAccessibility="true"
     android:canRetrieveWindowContent="true"
     android:packageNames="com.yaya.zone"
-    android:notificationTimeout="200" />
+    android:notificationTimeout="100" />
