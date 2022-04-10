@@ -1,10 +1,6 @@
 # 智能抢菜助手
 
-===========
-
-.. image:: https://app.travis-ci.com/logan62334/jarvis-android-agent.svg
-    :target: https://app.travis-ci.com/github/logan62334/jarvis-android-agent
-
+<img src="https://app.travis-ci.com/logan62334/jarvis-android-agent.svg">
 
 ## 下载
 
