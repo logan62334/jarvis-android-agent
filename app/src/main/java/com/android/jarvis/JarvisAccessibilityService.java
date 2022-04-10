@@ -46,6 +46,7 @@ public class JarvisAccessibilityService extends AccessibilityService {
                         handlePopup("选择送达时间", accessibilityNodeInfo);
                         break;
                     case "dy":
+                    case "xn1":
                         Log.i(TAG, "返回购物车");
                         handlePopup("返回购物车", accessibilityNodeInfo);
                         break;
@@ -101,7 +102,7 @@ public class JarvisAccessibilityService extends AccessibilityService {
                 public void run() {
                     performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
                 }
-            }, 500);
+            }, 700);
         }
     }
 
