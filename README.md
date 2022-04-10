@@ -2,6 +2,7 @@
 
 <p>
 <img src="https://app.travis-ci.com/logan62334/jarvis-android-agent.svg">
+<img src="https://img.shields.io/github/v/release/logan62334/jarvis-android-agent?include_prereleases">
 <img src="https://img.shields.io/github/downloads/logan62334/jarvis-android-agent/total">
 </p>
 
