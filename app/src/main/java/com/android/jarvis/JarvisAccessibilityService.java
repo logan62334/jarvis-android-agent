@@ -13,6 +13,7 @@ public class JarvisAccessibilityService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         if (event != null && event.getPackageName() != null && getRootInActiveWindow() != null) {
+            retry(event,"重新加载");
             Log.i(TAG, "onAccessibilityEvent: " + event.getPackageName());
             AccessibilityNodeInfo accessibilityNodeInfo = event.getSource();
             if (accessibilityNodeInfo != null) {
@@ -42,21 +43,36 @@ public class JarvisAccessibilityService extends AccessibilityService {
                         handlePopup("选择送达时间", accessibilityNodeInfo);
                         break;
                     case "dy":
-                        Log.i(TAG, "返回购物车");
-                        handlePopup("返回购物车", accessibilityNodeInfo);
+//                        Log.i(TAG, "返回购物车");
+//                        handlePopup("返回购物车", accessibilityNodeInfo);
+                        Log.i(TAG, "重新加载");
+                        handlePopup("重新加载", accessibilityNodeInfo);
                         break;
                     default:
                         Log.i(TAG, "默认");
                         if (isExist("去结算", accessibilityNodeInfo)) {
                             findAndPerformAction("去结算", accessibilityNodeInfo);
                         } else if (isExist("返回购物车", accessibilityNodeInfo)) {
-                            findAndPerformAction("返回购物车", accessibilityNodeInfo);
+                            findAndPerformAction("重新加载", accessibilityNodeInfo);
                         } else {
                             findAndPerformAction("立即支付", accessibilityNodeInfo);
                         }
                         break;
                 }
             }
+        }
+    }
+
+    private void retry(AccessibilityEvent event,String text){
+        try {
+            Log.i(TAG, "currentTextName: " + event.getText().toString());
+            String currentTextName = event.getText().toString();
+            if (("[" + text + "]").equals(currentTextName)) {
+                Log.i(TAG, text);
+                findAndPerformParentAction(text,event.getSource());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -80,6 +96,17 @@ public class JarvisAccessibilityService extends AccessibilityService {
         if (nodes != null && !nodes.isEmpty()) {
             for (int i = 0; i < nodes.size(); i++) {
                 nodes.get(i).performAction(AccessibilityNodeInfo.ACTION_CLICK);
+            }
+        }
+    }
+
+    private void findAndPerformParentAction(String text, AccessibilityNodeInfo accessibilityNodeInfo) {
+        List<AccessibilityNodeInfo> nodes = accessibilityNodeInfo.findAccessibilityNodeInfosByText(text);
+        if (nodes != null && !nodes.isEmpty()) {
+            for (int i = 0; i < nodes.size(); i++) {
+                if (nodes.get(i).getParent().isEnabled()) {
+                    nodes.get(i).getParent().performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                }
             }
         }
     }
