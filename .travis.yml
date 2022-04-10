@@ -1,13 +1,14 @@
 language: android
 
-sudo: false
-
 android:
   components:
     - build-tools-30.0.3
     - android-30
     - extra-android-m2repository
     - extra-android-support
+
+before_install:
+  - yes | sdkmanager "platforms;android-30"
 
 script:
   - ./gradlew assembleRelease
